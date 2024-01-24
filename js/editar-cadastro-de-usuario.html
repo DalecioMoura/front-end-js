@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Material</title>
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <link rel="stylesheet" href="../css/form-usuario-body.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+    <header id="index-header">
+        <div id="header-div1">
+            <h1>CONTROLE DE MATERIAL</h1>
+            <img src="../img/login3.jpg" alt="">
+        </div>
+        <div id="header-div2">
+            <nav>
+                <a href="../index.html"><button>HOME</button></a>
+                <a href="../js/consulta-de-material.html"><button>Consulta de Material</button></a>
+                <a href="../js/cadastrar-material.html"><button>Cadastrar Material</button></a>
+                <a href="../js/editar-material.html"><button>Editar Material</button></a>
+                <a href="../js/excluir-material.html"><button>Excluir Material</button></a>
+                <a href="../js/retirar-material.html"><button>Retirada de Material</button></a>
+                <a href="../js/devolver-material.html"><button>Devolução de Material</button></a>
+                <a href="../js/cadastrar-usuario.html"><button>Cadastrar Usuário</button></a>
+                <a href="../js/consultar-cadastro-de-usuario.html"><button>Consultar Cadastro de Usuário</button></a>
+                <a href="../js/editar-cadastro-de-usuario.html"><button>Editar Cadastro de Usuário</button></a>
+                <a href="../js/excluir-cadastro-de-usuario.html"><button>Excluir Usuário</button></a>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div id="div-principal">
+            <div id="div-form">
+                <h3>Editar Cadastro de Usuário</h3>
+                <form>
+                    <table>
+                        <tr>
+                            <th class="th-col1">Matricula:</th>
+                            <td class="td-col2"><input type="text" placeholder="Informe o código do material"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-col1">Nome:</th>
+                            <td class="td-col2"><input type="text" placeholder="Informe o tipo do material"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-col1">Setor:</th>
+                            <td class="td-col2"><input type="text" placeholder="Informe a localização do objeto"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input id="id-input-enviar" type="button" value="Enviar" v-on:click="enviarDados"></td>
+                        </tr>
+                    </table>
+                    
+                </form>         
+            </div>
+        </div>
+    </section>
+    <footer>CHESF &copy; 2024</footer>
+</body>
+</html>
