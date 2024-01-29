@@ -11,8 +11,32 @@ async function consultarMaterial(){
  }
 
  function exibirLista(lista){
-    document.getElementById("section-exibir-lista").style.display = 'inline-block';
-    for(let i = 0; i<2; i++){
+    var sectionList = document.getElementById("section-exibir-lista");
+    sectionList.style.display = 'inline-block';
+    for(i in lista){
+        sectionList.innerHTML=sectionList.innerHTML + `<div class="linhas">
+                <div class="linha">${lista[i].id}</div>
+                <div class="linha">${lista[i].codigo}</div>
+                <div class="linha">${lista[i].tipo}</div>
+                <div class="linha">${lista[i].localizacao}</div>
+                <div class="linha">${lista[i].n_serie}</div>
+                <div class="linha">${lista[i].modelo}</div>
+                <div class="linha">${lista[i].fabricante}</div>
+                <div class="linha">${lista[i].descricao}</div>
+                <div class="linha">
+                    <div class="st">${lista[i].st.st}</div>
+                    <div class="st">${lista[i].st.nome}</div>
+                    <div class="st">${lista[i].st.matricula}</div>
+                    <div class="st">${lista[i].st.destino}</div>
+                    <div class="st">${lista[i].st.data}</div>
+                </div>
+            </div>`
+    }
+
+    
+
+ }
+    /*for(let i = 0; i<2; i++){
         document.getElementById("id_linha").innerHTML = lista[i].id
         document.getElementById("col-codigo").innerHTML = lista[i].codigo
         document.getElementById("col-tipo").innerHTML = lista[i].tipo
@@ -26,6 +50,5 @@ async function consultarMaterial(){
         document.getElementById("st-mat").innerHTML = lista[i].st.matricula
         document.getElementById("st-dest").innerHTML = lista[i].st.destino
         document.getElementById("st-data").innerHTML = lista[i].st.data
-    }
+    }*/
     
- }
