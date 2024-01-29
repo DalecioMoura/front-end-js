@@ -1,5 +1,3 @@
-console.log('teste')
-
 
 async function consultarMaterial(){
     const req = await fetch('https://apicontroledematerial.onrender.com/api/itens');
@@ -7,25 +5,75 @@ async function consultarMaterial(){
     console.log(res)
     console.log(res.result)
     console.log(res.result.length)
-    exibirLista(res.result);
+    exibirLista(res.result, 'Nova Pesquisa');
  }
 
- function exibirLista(lista){
-    document.getElementById("section-exibir-lista").style.display = 'inline-block';
-    for(let i = 0; i<2; i++){
-        document.getElementById("id_linha").innerHTML = lista[i].id
-        document.getElementById("col-codigo").innerHTML = lista[i].codigo
-        document.getElementById("col-tipo").innerHTML = lista[i].tipo
-        document.getElementById("col-local").innerHTML = lista[i].localizacao
-        document.getElementById("col-serie").innerHTML = lista[i].n_serie
-        document.getElementById("col-modelo").innerHTML = lista[i].modelo
-        document.getElementById("col-fab").innerHTML = lista[i].fabricante
-        document.getElementById("col-desc").innerHTML = lista[i].descricao
-        document.getElementById("st-st").innerHTML = lista[i].st.st
-        document.getElementById("st-nome").innerHTML = lista[i].st.nome
-        document.getElementById("st-mat").innerHTML = lista[i].st.matricula
-        document.getElementById("st-dest").innerHTML = lista[i].st.destino
-        document.getElementById("st-data").innerHTML = lista[i].st.data
-    }
+ /*function exibirLista(lista){
+
+    let textElement = ['#:', 'Código:', 'Tipo:', 'Localização:', 'Nº serie:', 
+                        'Modelo:', 'Fabricante:', 'Descrição:', 'Status:'];
+
+    let sectioExibirLista = document.getElementById("section-exibir-lista");
+    sectioExibirLista.style.display = 'inline-block';
+
+    let divPrincipal = document.createElement('div');
+    divPrincipal.setAttribute('id', 'exibir-lista-div-principal');
+
+    let divButton = document.createElement('div');
+    divButton.setAttribute('id', 'div-button');
+
+    let btn = document.createElement('button');
+    btn.setAttribute('id', 'btn-nova-pesquisa');
+    btn.setAttribute('onclick', 'resetEstado()')
+    btn.appendChild(document.createTextNode('Nova Pesquisa'))
+
+    let titulo = document.createElement('h2');
+    titulo.appendChild(document.createTextNode('Lista de Material'));
+    divButton.appendChild(btn);
+
+    let divCabecalho = document.createElement('div'); 
+    divCabecalho.setAttribute('class', 'cabecalho');
     
+    divPrincipal.appendChild(divButton);
+    divPrincipal.appendChild(titulo);
+    divPrincipal.appendChild(divCabecalho);
+    
+    for(i in textElement){
+        let divColuna = document.createElement('div');
+        if(textElement[i] === '#:')
+            divColuna.setAttribute('id', 'id-col');
+        divColuna.setAttribute('class', 'col');
+        divColuna.appendChild(document.createTextNode(textElement[i]));
+        divCabecalho.appendChild(divColuna);
+    }
+    for(j in lista){
+        let divLinhas = document.createElement('div');
+        divLinhas.setAttribute('class', 'linhas');
+        for(i in lista[j]){
+            let divLinha = document.createElement('div');
+            divLinha.setAttribute('class', 'linha');
+            if(i === 'st'){
+                let arr = lista[j][i];
+                for(let x in arr){
+                    let st = document.createElement('div');
+                    st.appendChild(document.createTextNode(arr[x]));
+                    divLinha.appendChild(st);
+                }
+                
+            }else
+                divLinha.appendChild(document.createTextNode(lista[j][i]));
+            divLinhas.appendChild(divLinha);
+        }
+        divPrincipal.appendChild(divLinhas);
+    }
+    sectioExibirLista.appendChild(divPrincipal);
+
+    document.getElementById('section-form').style.display = 'none';
  }
+
+ function resetEstado(){
+    document.getElementById('section-form').style.display='block';
+    document.getElementById('section-exibir-lista').style.display='none';
+    let divPrincipal = document.getElementById('exibir-lista-div-principal');
+    divPrincipal.remove();
+ }*/
