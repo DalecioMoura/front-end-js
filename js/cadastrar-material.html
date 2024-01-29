@@ -6,8 +6,9 @@
     <title>Cadastro de Material</title>
     <link rel="stylesheet" href="../css/cabecalho.css">
     <link rel="stylesheet" type="text/css" href="../css/form-material-body.css">
+    <link rel="stylesheet" href="../css/exibir-lista.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <script type="text/javascript" src="../js/cadastrar-material.js"></script>
+    
 </head>
 <body>
     <header id="header-cadastar-material">
@@ -31,7 +32,7 @@
             </nav>
         </div>
     </header>
-    <section>
+    <section id="section-form">
         <div id="div-principal"> 
             <div id="div-form">
                 <h1>Cadastro de Material</h1>
@@ -39,31 +40,31 @@
                     <table>
                         <tr>
                             <th class="th-col1">Código:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o código do material"></td>
+                            <td class="td-col2"><input id="id-codigo" type="text" value="" placeholder="Informe o código do material"></td>
                         </tr>
                         <tr>
                             <th class="th-col1">Tipo:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o tipo do material"></td>
+                            <td class="td-col2"><input id="id-tipo" type="text" placeholder="Informe o tipo do material"></td>
                         </tr>
                         <tr>
                             <th class="th-col1">Localização:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe a localização do objeto"></td>
+                            <td class="td-col2"><input id="id-local" type="text" placeholder="Informe a localização do objeto"></td>
                         </tr>
                         <tr>
                             <th class="th-col1">Nº de Série:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o número de série do objeto"></td>
+                            <td class="td-col2"><input id="id-serie" type="text" placeholder="Informe o número de série do objeto"></td>
                         </tr>
                         <tr>
                             <th class="th-col1">Modelo:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o modelo do objeto"></td>
+                            <td class="td-col2"><input id="id-modelo" type="text" placeholder="Informe o modelo do objeto"></td>
                         </tr>
                         <tr>
                             <th class="th-col1">Fabricante:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o Fabricante do objeto"></td>
+                            <td class="td-col2"><input id="id-fabricante" type="text" placeholder="Informe o Fabricante do objeto"></td>
                         </tr>
                         <tr>
                             <th id="th-description" class="th-col1">Descrição:</th>
-                            <td class="td-col2"><textarea name="" id="" cols="" rows="" placeholder="Faça uma breve descrição do objeto"></textarea></td>
+                            <td class="td-col2"><textarea name="" id="id-descricao" cols="" rows="" placeholder="Faça uma breve descrição do objeto"></textarea></td>
                         </tr>
                         <tr>
                             <th></th>
@@ -75,7 +76,9 @@
             </div>
         </div>
     </section>
+    <section id="section-exibir-lista"></section>
     <footer>CHESF &copy; 2024</footer>
-    
+    <script src="../js/cadastrar-material.js"></script>
+    <script src="../js/exibir-lista.js"></script>
 </body>
 </html>

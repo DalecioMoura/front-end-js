@@ -32,7 +32,7 @@
             </nav>
         </div>
     </header>
-    <section>
+    <section id="section-form">
         <div id="div-principal"> 
             <div id="div-form">
                 <h1>Consulta de Material</h1>
@@ -63,30 +63,14 @@
                             <td><input id="id-input-enviar" type="button" value="Enviar" onclick="consultarMaterial();"></td>
                         </tr>
                     </table>
-                    <!--input id="id-input-enviar" type="button" value="Enviar" v-on:click="enviarConsulta"-->
                 </form>  
             </div>
         </div>
     </section>
     <section id="section-exibir-lista">
-        <div id="exibir-lista-div-principal">
-            <div><button id="btn-nova-pesquisa" @click="resetaEstado">Nova Pesquisa</button></div>
-            <h2>Lista de Material</h2>
-            <div class="cabecalho">
-                <div id="id_col" class="col">#:</div>
-                <div class="col">Código:</div>
-                <div class="col">Tipo:</div>
-                <div class="col">Localização:</div>
-                <div class="col">Nº de Série:</div>
-                <div class="col">Modelo:</div>
-                <div class="col">Fabricante:</div>
-                <div class="col">Descrição:</div>
-                <div class="col">Status:</div>
-            </div>
-        </div>
     </section>
     <footer>CHESF &copy; 2024</footer>
-    <script type="text/javascript" src="../js/consulta-de-material.js"></script>
-    <link rel="stylesheet" href="../css/exibir-lista.css">
+    <script src="../js/consulta-de-material.js"></script>
+    <script src="../js/exibir-lista.js"></script>
 </body>
 </html>
