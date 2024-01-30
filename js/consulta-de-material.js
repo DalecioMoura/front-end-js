@@ -2,10 +2,32 @@
 async function consultarMaterial(){
     const req = await fetch('https://apicontroledematerial.onrender.com/api/itens');
     const res = await req.json();
-    console.log(res)
-    console.log(res.result)
-    console.log(res.result.length)
+    filtro(res.result);
     exibirLista(res.result, 'Nova Pesquisa');
+ }
+
+ function filtro(dados){
+    let codigo      = document.getElementById('id-codigo').value;
+    let tipo        = document.getElementById('id-tipo').value;
+    let localizacao = document.getElementById('id-local').value;
+    let modelo      = document.getElementById('id-modelo').value;
+    let fabricante  = document.getElementById('id-fabricante').value;
+
+    let dado = {
+                "codigo"        : document.getElementById('id-codigo').value,
+                "tipo"          : document.getElementById('id-tipo').value,
+                "localizacao"   : document.getElementById('id-local').value,
+                "modelo"        : document.getElementById('id-modelo').value,
+                "fabricante"    : document.getElementById('id-fabricante').value,
+                }
+    for(let i in dado){
+        let teste = {"filtro":i, "valor":dado[i]}
+        console.log(i);
+        console.log(dado[i]);
+        console.log(JSON.stringify(teste));
+        console.log(JSON.stringify(dado));
+    }
+    
  }
 
  /*function exibirLista(lista){
