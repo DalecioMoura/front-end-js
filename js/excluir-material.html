@@ -6,6 +6,7 @@
     <title>Ecluir Material</title>
     <link rel="stylesheet" href="../css/cabecalho.css">
     <link rel="stylesheet" href="../css/form-material-body.css">
+    <link rel="stylesheet" href="../css/exibir-lista.css">
     <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
@@ -30,7 +31,7 @@
             </nav>
         </div>
     </header>
-    <section>
+    <section id="section-form">
         <div id="div-principal"> 
             <div id="div-form">
                 <h1>Excluir Material</h1>
@@ -38,19 +39,20 @@
                     <table>
                         <tr>
                             <th class="th-col1">Código:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o código do material"></td>
+                            <td class="td-col2"><input id="id-codigo" type="text" placeholder="Informe o código do material"></td>
                         </tr>
                         <tr>
                             <th></th>
-                            <td><input id="id-input-enviar" type="button" value="Excluir" v-on:click="enviarConsulta"></td>
+                            <td><input id="id-input-enviar" type="button" value="Excluir" onclick="excluirMaterial()"></td>
                         </tr>
                     </table>
-                    <!--input id="id-input-enviar" type="button" value="Enviar" v-on:click="enviarConsulta"-->
                 </form>
-               
             </div>
         </div>
     </section>
+    <section id="section-exibir-lista"></section>
     <footer>CHESF &copy; 2024</footer>
+    <script src="../js/excluir-material.js"></script>
+    <script src="../js/exibir-lista.js"></script>
 </body>
 </html>

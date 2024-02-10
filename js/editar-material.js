@@ -1,8 +1,8 @@
 let habilitaEditar = false;
 let id = '';
-let test = document.querySelectorAll('.ocultar');
+let elemento = document.querySelectorAll('.ocultar');
 for(let i = 0; i<6; i++){
-    test[i].style.display = 'none'
+    elemento[i].style.display = 'none'
 }
 
 
@@ -24,7 +24,7 @@ async function buscarDadosParaEdicao(){
     const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${JSON.stringify(dado)}`);
     const res = await req.json();
     for(let i = 0; i<6; i++){
-        test[i].style.display = '';   
+        elemento[i].style.display = '';   
     }
     id = res.result[0].id;
         document.getElementById('id-codigo').value      = res.result[0].codigo;
@@ -46,6 +46,7 @@ async function buscarDadosParaEdicao(){
         console.log(res.result[0].descricao)
     console.log(dado);
     console.log(res.result);
+    habilitaEditar = true
 }
 
 async function enviarDadosEditados(){
@@ -67,4 +68,6 @@ async function enviarDadosEditados(){
         });
         const res = await req.json();
         console.log(res.result);
+        habilitaEditar = false;
+        exibirLista(res.result, "Editar outro ítem");
 }

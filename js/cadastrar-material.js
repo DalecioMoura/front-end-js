@@ -10,7 +10,7 @@ async function cadastarMaterial(){
       console.log('O código digitado já está vinculado a um produto.\nDigite um código diferente.');
    else{
       let dadosJSON = JSON.stringify(dados);
-      const req = await fetch('https://apicontroledematerial.onrender.com/api/item',{
+      const req = await fetch('https://apicontroledematerial.onrender.com/api/item',{//https://apicontroledematerial.onrender.com
          method: "POST",
          headers:{"Content-Type": "application/json"},
          body:dadosJSON
