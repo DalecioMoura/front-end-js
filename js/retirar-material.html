@@ -38,15 +38,15 @@
                     <table>
                         <tr>
                             <th class="th-col1">Código:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o código do material"></td>
+                            <td class="td-col2"><input id="codigo" type="text" placeholder="Informe o código do material"></td>
                         </tr>
                         <tr>
                             <th class="th-col1">Destino:</th>
-                            <td class="td-col2"><input type="text" placeholder="Informe o destino do material"></td>
+                            <td class="td-col2"><input id="id-destino" type="text" placeholder="Informe o destino do material"></td>
                         </tr>
                         <tr>
                             <th></th>
-                            <td><input id="id-input-enviar" type="button" value="Retirar" v-on:click="enviarConsulta"></td>
+                            <td><input id="id-input-enviar" type="button" value="Retirar" onclick="retirarMaterial()"></td>
                         </tr>
                     </table>
                     <!--input id="id-input-enviar" type="button" value="Enviar" v-on:click="enviarConsulta"-->
@@ -56,5 +56,6 @@
         </div>
     </section>
     <footer>CHESF &copy; 2024</footer>
+    <script src="../js/retirar-material.js"></script>
 </body>
 </html>

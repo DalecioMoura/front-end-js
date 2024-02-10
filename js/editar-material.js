@@ -36,6 +36,8 @@ async function buscarDadosParaEdicao(){
         document.getElementById('id-descricao').value   = res.result[0].descricao;
         let input = document.querySelector('#id-input-enviar');
         input.value = 'Editar';
+        habilitaEditar = true;
+
         console.log(res.result[0].id)
         console.log(res.result[0].codigo)
         console.log(res.result[0].tipo)
@@ -50,6 +52,7 @@ async function buscarDadosParaEdicao(){
 
 async function enviarDadosEditados(){
     console.log("dados editados");
+    console.log(habilitaEditar)
     const dados = {
         "codigo":      document.getElementById('id-codigo').value,
         "tipo":        document.getElementById('id-tipo').value,
@@ -67,4 +70,5 @@ async function enviarDadosEditados(){
         });
         const res = await req.json();
         console.log(res.result);
+        exibirLista(res.result, 'Editar outro ítem');
 }

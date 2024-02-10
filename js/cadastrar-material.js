@@ -1,10 +1,12 @@
 
 async function cadastarMaterial(){
-   const req = await fetch('https://apicontroledematerial.onrender.com/api/itens');
+   let dados = pegaForm();
+   let filtro = {"filtro":Object.keys(dados)[0], "valor":dados.codigo};
+   const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${JSON.stringify(filtro)}`);
    const res = await req.json();
    console.log(res.result)
+
    
-   let dados = pegaForm();
    let isExistent = compara(res.result, dados.codigo)
    if(isExistent)
       console.log('O código digitado já está vinculado a um produto.\nDigite um código diferente.');
@@ -48,27 +50,4 @@ function compara(resResult, dadosCodigo){
    }
    return resultado;
 }
-
-/*function exibirLista(){
-   let sectioExibirLista = document.getElementById('section-exibir-lista');
-   sectioExibirLista.style.display = 'inline-block';
-
-   let divPricipal = document.createElement('div');
-   divPricipal.setAttribute('id', 'exibir-lista-div-principal');
-
-   let divButton = document.createElement('div');
-   divButton.setAttribute('id', 'div-button');
-
-   let btn = document.createElement('button');
-   btn.setAttribute('id', 'btn-nova-pesquisa');
-   btn.setAttribute('onclick', 'novoCadastro()');
-   btn.appendChild(document.createTextNode('Cadastrar outro ítem'));
-
-   divButton.appendChild(btn);
-
-   let titulo = document.createElement('h2');
-   titulo.appendChild(document.createTextNode('Lista de Material'));
-
-
-}*/
 
