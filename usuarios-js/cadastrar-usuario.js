@@ -13,6 +13,7 @@ async function cadastrarUsuario(){
     const res = await req.json();
     console.log(res.result);
     exibirUsuarios(res.result,'Cadastrar outro usuário');
+    reset();
 }
 
 function pegaForm(){
@@ -27,4 +28,9 @@ function pegaForm(){
     };
 
     return dados;
+}
+function reset(){
+    document.getElementById('id-matricula').value = '';
+    document.getElementById('id-nome').value = '';
+    document.getElementById('id-setor').value = '';
 }
