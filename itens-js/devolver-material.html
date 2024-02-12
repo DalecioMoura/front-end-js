@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devolução Material</title>
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <link rel="stylesheet" href="../css/form-material-body.css">
+    <link rel="stylesheet" href="../css/exibir-lista.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+    <header id="header-cadastar-material">
+        <div id="header-div1">
+            <h1>CONTROLE DE MATERIAL</h1>
+            <img src="../img/login3.jpg" alt="">
+        </div>
+        <div id="header-div2">
+            <nav>
+                <a href="../index.html"><button>HOME</button></a>
+                <a href="../itens-js/consulta-de-material.html"><button>Consulta de Material</button></a>
+                <a href="../itens-js/cadastrar-material.html"><button>Cadastrar Material</button></a>
+                <a href="../itens-js/editar-material.html"><button>Editar Material</button></a>
+                <a href="../itens-js/excluir-material.html"><button>Excluir Material</button></a>
+                <a href="../itens-js/retirar-material.html"><button>Retirada de Material</button></a>
+                <a href="../itens-js/devolver-material.html"><button>Devolução de Material</button></a>
+                <a href="../usuarios-js/cadastrar-usuario.html"><button>Cadastrar Usuário</button></a>
+                <a href="../usuarios-js/consultar-cadastro-de-usuario.html"><button>Consultar Cadastro de Usuário</button></a>
+                <a href="../usuarios-js/editar-cadastro-de-usuario.html"><button>Editar Cadastro de Usuário</button></a>
+                <a href="../usuarios-js/excluir-cadastro-de-usuario.html"><button>Excluir Usuário</button></a>
+            </nav>
+        </div>
+    </header>
+    <section id="section-form">
+        <div id="div-principal"> 
+            <div id="div-form">
+                <h1>Devolução de Material</h1>
+                <form>
+                    <table>
+                        <tr>
+                            <th class="th-col1">Código:</th>
+                            <td class="td-col2"><input id="id-codigo" type="text" placeholder="Informe o código do material"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input id="id-input-enviar" type="button" value="Devolver" onclick="devolverMaterial()"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="section-exibir-lista"></section>
+    <footer>CHESF &copy; 2024</footer>
+    <script src="devolver-material.js"></script>
+    <script src="exibir-lista.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 function exibirUsuarios(lista, msg){
-    console.log('exibir usuarios');
-    let textElement = ['#','Nome','Matricula','Setor'];
+    console.log(lista);
+    let textElement = ['#','Matricula','Nome','apelido', 'Setor'];
     let sectionListarUsuarios = document.getElementById('section-exibir-usuarios');
     sectionListarUsuarios.style.display = 'inline-block';
 
@@ -12,7 +12,7 @@ function exibirUsuarios(lista, msg){
 
     let btn = document.createElement('button');
     btn.setAttribute('id', 'btn-novo-evento');
-    btn.setAttribute('onclick', 'resetEstado()');
+    btn.setAttribute('onclick', 'resetarEstado()');
     btn.appendChild(document.createTextNode(msg));
     divButton.appendChild(btn);
 
@@ -33,6 +33,21 @@ function exibirUsuarios(lista, msg){
         divColuna.setAttribute('class', 'col');
         divColuna.appendChild(document.createTextNode(textElement[i]));
         divCabecalho.appendChild(divColuna);
+    }
+
+    for(let i in lista){
+        let divLinhas = document.createElement('div');
+        divLinhas.setAttribute('class', 'linhas');
+
+        for( let j in lista[i]){
+            let divLinha = document.createElement('div');
+            divLinha.setAttribute('class', 'linha');
+            if(j === 'id')
+                divLinha.setAttribute('id', 'id-linha');
+            divLinha.appendChild(document.createTextNode(lista[i][j]));
+            divLinhas.appendChild(divLinha);
+        }
+        divPrincipal.appendChild(divLinhas);
     }
 
     sectionListarUsuarios.appendChild(divPrincipal);
