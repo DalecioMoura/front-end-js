@@ -1,23 +1,30 @@
 let habilitaExcluir = false;
 let id = '';
+
 document.getElementById('tr-nome').style.display = 'none';
 document.getElementById('tr-setor').style.display = 'none';
 
 function excluirUsuario(){
     
-    let matricula = document.getElementById('id-matricula').value;
+    if(isLogado == 'true'){
+        let matricula = document.getElementById('id-matricula').value;
 
-    let filtro = {"filtro":"matricula", "valor":matricula};
-    
-    if(matricula){
-        console.log('matricula: '+ matricula);
-        if(!habilitaExcluir){
-            buscarUsuario(filtro)
-        }else
-            excluir();
+        let filtro = {"filtro":"matricula", "valor":matricula};
+        
+        if(matricula){
+            console.log('matricula: '+ matricula);
+            if(!habilitaExcluir){
+                buscarUsuario(filtro)
+            }else
+                excluir();
+        }
+        else
+            console.log('digite algo válido!');
     }
-    else
-        console.log('digite algo válido!'); 
+    else{
+        if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))
+            window.location.href = '../index.html';
+    }
 }
 
 async function buscarUsuario(filtro){
@@ -27,7 +34,6 @@ async function buscarUsuario(filtro){
     const res = await req.json();
 
     let usuario = res.result[0];
-    console.log(res.result);
 
     document.getElementById('tr-nome').style.display = '';
     document.getElementById('tr-setor').style.display = '';
@@ -44,7 +50,7 @@ async function buscarUsuario(filtro){
 }
 
 async function excluir(){
-    console.log('id: '+id);
+    
     if(id){
         const req = await fetch(`https://apicontroledematerial.onrender.com/api/usuario/${id}`,{
             method:"DELETE",
@@ -54,13 +60,11 @@ async function excluir(){
         reset();
 
         const res = await req.json()
-        console.log(res);
 
     }
     else{
         console.log("Não foi possível execultar a operação!")
     }
-    console.log('Excluído!');
     
     habilitaExcluir = false;  
 }

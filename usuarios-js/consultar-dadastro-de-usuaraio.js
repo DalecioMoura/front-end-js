@@ -36,17 +36,15 @@ async function semFiltro(){
     const req = await fetch('https://apicontroledematerial.onrender.com/api/usuarios');
     const res = await req.json();
 
-    console.log(res)
     exibirUsuarios(res.result, "Nova Consulta");  
 }
 
 async function comFiltro(filtro){
+
     let filtroJson = JSON.stringify(filtro);
+    
     const req = await fetch(`https://apicontroledematerial.onrender.com/api/usuario/${filtroJson}`);
     const res = await req.json();
-    console.log(filtro);
-    console.log(filtroJson);
-    console.log(res.result);
 
     exibirUsuarios(res.result, "Nova Consulta");
 }

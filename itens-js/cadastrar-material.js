@@ -1,28 +1,39 @@
 
 async function cadastarMaterial(){
-   let dados = pegaForm();
-   let filtro = {"filtro":Object.keys(dados)[0], "valor":dados.codigo};
-   const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${JSON.stringify(filtro)}`);
-   const res = await req.json();
-   console.log(res.result)
 
-   
-   let isExistent = compara(res.result, dados.codigo)
-   if(isExistent)
-      console.log('Usuário já cadastrado!.\nDigite um código diferente.');
-   else{
-      let dadosJSON = JSON.stringify(dados);
-      const req = await fetch('https://apicontroledematerial.onrender.com/api/item',{//https://apicontroledematerial.onrender.com
-         method: "POST",
-         headers:{"Content-Type": "application/json"},
-         body:dadosJSON
-      });
+   if(isLogado == 'true'){
+
+      let dados = pegaForm();
+
+      let filtro = {"filtro":Object.keys(dados)[0], "valor":dados.codigo};
+
+      const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${JSON.stringify(filtro)}`);
       const res = await req.json();
-      console.log('resulatdo da inclusão:');
-      console.log(res);
-      exibirUsuarios(res.result, 'Cadastrar outro ítem');
+
+      let isExistent = compara(res.result, dados.codigo);
+
+      if(isExistent)
+         console.log('Usuário já cadastrado!.\nDigite um código diferente.');
+      else{
+         let dadosJSON = JSON.stringify(dados);
+
+         const req = await fetch('https://apicontroledematerial.onrender.com/api/item',{
+            method: "POST",
+            headers:{"Content-Type": "application/json"},
+            body:dadosJSON
+         });
+
+         const res = await req.json();
+
+         exibirUsuarios(res.result, 'Cadastrar outro ítem');
+      }
+   }
+   else{
+       if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))
+           window.location.href = '../index.html';
    }
 }
+
 function pegaForm(){
 
    const dados = {

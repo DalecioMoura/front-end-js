@@ -5,32 +5,38 @@ let isFiltro = false;
 
 function editarUsuario(){
 
-    let dados = {
-        "matricula":    document.getElementById('id-matricula').value,
-        "nome":         document.getElementById('id-nome').value,
-        "setor":        document.getElementById('id-setor').value,
-    };
-
-    let filtro      = {"filtro":'', "valor":''};
-
-    if(!habilitaEditar){
-        for(let i in dados){
-            if(dados[i] !== '' && dados[i] !== null){
-                filtro.filtro   = i;
-                filtro.valor    = dados[i];
-                isFiltro = true;
-                break; 
+    if(isLogado == 'true'){
+        let dados = {
+            "matricula":    document.getElementById('id-matricula').value,
+            "nome":         document.getElementById('id-nome').value,
+            "setor":        document.getElementById('id-setor').value,
+        };
+    
+        let filtro      = {"filtro":'', "valor":''};
+    
+        if(!habilitaEditar){
+            for(let i in dados){
+                if(dados[i] !== '' && dados[i] !== null){
+                    filtro.filtro   = i;
+                    filtro.valor    = dados[i];
+                    isFiltro = true;
+                    break; 
+                }
             }
-        }
-        if(isFiltro){
-            buscarDados(filtro);
-            isFiltro = false;
+            if(isFiltro){
+                buscarDados(filtro);
+                isFiltro = false;
+            }
+            else
+                console.log('Usuário não encontrado!')
         }
         else
-            console.log('Usuário não encontrado!')
+            editarDados();
     }
-    else
-        editarDados();
+    else{
+        if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))
+            window.location.href = '../index.html';
+    }  
 }
 
 async function buscarDados(filtro){
@@ -39,8 +45,6 @@ async function buscarDados(filtro){
 
     const req = await fetch(`https://apicontroledematerial.onrender.com/api/usuario/${filtroJson}`);
     const res = await req.json();
-
-    console.log(res.result);
 
     let usuario =res.result[0];
     id = usuario.id;
@@ -76,8 +80,6 @@ async function editarDados(){
     });
 
     const res = await req.json();
-
-    console.log(res.result);
     
     habilitaEditar = false;
     
@@ -86,6 +88,7 @@ async function editarDados(){
     document.getElementById('id-matricula').value   = '';
     document.getElementById('id-nome').value        = '';
     document.getElementById('id-setor').value       = '';
+    
     let input = document.getElementById('id-input-enviar');
     input.value = 'Buscar';
 }

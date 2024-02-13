@@ -1,19 +1,27 @@
 
 async function cadastrarUsuario(){
-    let dados = pegaForm();
 
-    let dadosJson = JSON.stringify(dados);
+    if(isLogado == 'true'){
+        
+        let dados = pegaForm();
 
-    const req = await fetch('https://apicontroledematerial.onrender.com/api/usuario',{
-        method: 'POST',
-        headers:{"Content-Type": "application/json"},
-        body: dadosJson
-    });
+        let dadosJson = JSON.stringify(dados);
 
-    const res = await req.json();
-    console.log(res.result);
-    exibirUsuarios(res.result,'Cadastrar outro usuário');
-    reset();
+        const req = await fetch('https://apicontroledematerial.onrender.com/api/usuario',{
+            method: 'POST',
+            headers:{"Content-Type": "application/json"},
+            body: dadosJson
+        });
+
+        const res = await req.json();
+
+        exibirUsuarios(res.result,'Cadastrar outro usuário');
+        reset();
+    }
+    else{
+        if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))
+            window.location.href = '../index.html';
+    }
 }
 
 function pegaForm(){

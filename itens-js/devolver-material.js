@@ -1,25 +1,35 @@
 
 async function devolverMaterial(){
-    let codigo = document.getElementById('id-codigo').value;
+    if(isLogado == 'true'){
 
-    let filtro = {"filtro":"codigo", "valor":codigo};
-    let dados = {
-        "st":"Disponível",
-        "nome":"",
-        "matricula":"",
-        "destino":"",
-        "data":""
-    };
-    let dadosJSON = JSON.stringify({"status":dados});
-    let filtroJSON = JSON.stringify(filtro)
-    const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${filtroJSON}`,{//https://apicontroledematerial.onrender.com
-         method: "PATCH",
-         headers:{"Content-Type": "application/json"},
-         body:dadosJSON
-      });
+        let codigo = document.getElementById('id-codigo').value;
 
-    const res = await req.json();
-    console.log(res);
+        let filtro = {"filtro":"codigo", "valor":codigo};
 
-    exibirLista(res.result, 'Devolver outro ítem');
+        let dados = {
+            "st":"Disponível",
+            "nome":"",
+            "matricula":"",
+            "destino":"",
+            "data":""
+        };
+
+        let dadosJSON = JSON.stringify({"status":dados});
+        let filtroJSON = JSON.stringify(filtro);
+
+        const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${filtroJSON}`,{
+            method: "PATCH",
+            headers:{"Content-Type": "application/json"},
+            body:dadosJSON
+        });
+
+        const res = await req.json();
+
+        exibirLista(res.result, 'Devolver outro ítem');
+    }
+    else{
+        if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))
+            window.location.href = '../index.html';
+    }
+    
 }

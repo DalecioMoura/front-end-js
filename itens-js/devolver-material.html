@@ -12,8 +12,19 @@
 <body>
     <header id="header-cadastar-material">
         <div id="header-div1">
+            <div id="id-nome-usuario">
+                <div id="id-info"></div>
+                <div id="header-nome"></div>
+                <div id="header-matricula"></div>
+                <div id="header-setor"></div>
+            </div>
             <h1>CONTROLE DE MATERIAL</h1>
-            <img src="../img/login3.jpg" alt="">
+            <div>
+                <div id="id-div-img">
+                    <img src="../img/login3.jpg" alt="">
+                    <span id="id-login-usuario" onclick="loginLogout()">Entar</span>  
+                </div>
+            </div>
         </div>
         <div id="header-div2">
             <nav>
@@ -52,6 +63,7 @@
     </section>
     <section id="section-exibir-lista"></section>
     <footer>CHESF &copy; 2024</footer>
+    <script src="../usuarios-js/login.js"></script>
     <script src="devolver-material.js"></script>
     <script src="exibir-lista.js"></script>
 </body>

@@ -31,7 +31,6 @@ function consultarMaterial(){
     
     const req = await fetch(`https://apicontroledematerial.onrender.com/api/item/${JSON.stringify(dado)}`);
     const res = await req.json();
-    console.log(JSON.stringify(dado));
 
     exibirLista(res.result, 'Nova Pesquisa');
     }

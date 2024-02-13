@@ -12,8 +12,19 @@
 <body>
     <header id="index-header">
         <div id="header-div1">
+            <div id="id-nome-usuario">
+                <div id="id-info"></div>
+                <div id="header-nome"></div>
+                <div id="header-matricula"></div>
+                <div id="header-setor"></div>
+            </div>
             <h1>CONTROLE DE MATERIAL</h1>
-            <img src="../img/login3.jpg" alt="">
+            <div>
+                <div id="id-div-img">
+                    <img src="../img/login3.jpg" alt="">
+                    <span id="id-login-usuario" onclick="loginLogout()">Entar</span>  
+                </div>
+            </div>
         </div>
         <div id="header-div2">
             <nav>
@@ -61,7 +72,8 @@
     </section>
     <section id="section-exibir-usuarios"></section>
     <footer>CHESF &copy; 2024</footer>
+    <script src="login.js"></script>
     <script src="../usuarios-js/editar-cadastro-de-usuario.js"></script>
-    <script src="../usuarios-js/exibir-usuarios.js"></script>
+    <script src="../usuarios-js/exibir-usuarios.js"></script>  
 </body>
 </html>
