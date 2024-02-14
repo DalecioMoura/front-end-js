@@ -25,7 +25,15 @@ async function cadastarMaterial(){
 
          const res = await req.json();
 
-         exibirUsuarios(res.result, 'Cadastrar outro ítem');
+         exibirLista(res.result, 'Cadastrar outro ítem');
+
+         document.getElementById('id-codigo').value      = '';
+         document.getElementById('id-tipo').value        = '';
+         document.getElementById('id-local').value       = '';
+         document.getElementById('id-serie').value       = '';
+         document.getElementById('id-modelo').value      = '';
+         document.getElementById('id-fabricante').value  = '';
+         document.getElementById('id-descricao').value   = '';
       }
    }
    else{

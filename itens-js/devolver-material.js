@@ -26,6 +26,8 @@ async function devolverMaterial(){
         const res = await req.json();
 
         exibirLista(res.result, 'Devolver outro ítem');
+
+        document.getElementById('id-codigo').value  = '';
     }
     else{
         if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))

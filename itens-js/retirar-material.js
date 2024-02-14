@@ -28,7 +28,10 @@ async function retirarMaterial(){
         const res = await req.json();
         console.log(res);
 
-        exibirLista(res.result, 'Devolver outro ítem');
+        exibirLista(res.result, 'Retirar outro ítem');
+
+        document.getElementById('id-codigo').value  = '';
+        document.getElementById('id-destino').value = '';
     }
     else{
         if(confirm('Para execultar a operação é necessário estar logado!\nClick em Ok para ser direcionadapara a tela de login.'))

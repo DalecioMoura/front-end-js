@@ -84,11 +84,4 @@ async function editarDados(){
     habilitaEditar = false;
     
     exibirUsuarios(res.result, 'Editar outro usuário');
-
-    document.getElementById('id-matricula').value   = '';
-    document.getElementById('id-nome').value        = '';
-    document.getElementById('id-setor').value       = '';
-    
-    let input = document.getElementById('id-input-enviar');
-    input.value = 'Buscar';
 }
