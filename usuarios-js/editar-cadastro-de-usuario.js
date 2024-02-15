@@ -3,6 +3,9 @@ let habilitaEditar = false;
 let id = '';
 let isFiltro = false;
 
+document.getElementById('tr-nome').style.display = 'none';
+document.getElementById('tr-setor').style.display = 'none';
+
 function editarUsuario(){
 
     if(isLogado == 'true'){
@@ -48,6 +51,9 @@ async function buscarDados(filtro){
 
     let usuario =res.result[0];
     id = usuario.id;
+
+    document.getElementById('tr-nome').style.display = '';
+    document.getElementById('tr-setor').style.display = '';
   
     document.getElementById('id-matricula').value = usuario.matricula;
     document.getElementById('id-nome').value = usuario.nome;
@@ -84,11 +90,38 @@ async function editarDados(){
     habilitaEditar = false;
 
     
-    document.getElementById('id-matricula').value   = '';
+    /*document.getElementById('id-matricula').value   = '';
     document.getElementById('id-nome').value        = '';
     document.getElementById('id-setor').value       = '';
-    document.getElementById('id-input-enviar').value    = 'Buscar';
+    document.getElementById('id-input-enviar').value    = 'Buscar';*/
     
     exibirUsuarios(res.result, 'Editar outro usuário');
 
+    exibirMensagem();
+
+}
+
+function exibirMensagem(){
+    document.getElementById('id-matricula').value   = '';
+    document.getElementById('id-nome').value        = '';
+    document.getElementById('id-setor').value       = '';
+        
+    document.getElementById('tr-nome').style.display    = 'none';
+    document.getElementById('tr-setor').style.display   = 'none';
+    document.getElementById('id-input-enviar').value    = 'Buscar';
+
+    let msg = document.getElementById('id-msg');
+    msg.innerHTML = 'Cadastro de usuário editado com sucesso!'
+    msg.style.maxWidth = '500px';
+    msg.style.textAlign = 'center';
+    msg.style.color = 'red';
+    msg.style.backgroundColor = 'yellow';
+    msg.style.fontWeight = 'bold';
+    msg.style.padding = '10px';
+    msg.style.margin = '20px auto';
+    msg.style.borderRadius = '5px';
+    setTimeout(()=>{
+        document.getElementById('id-msg').innerHTML = '';
+        msg.style.backgroundColor = '';
+    }, 5000);
 }
