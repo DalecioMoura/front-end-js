@@ -11,6 +11,7 @@
     padding: 10px;
     margin: 20px auto;
     text-align: center;
+    margin-bottom: 60px;
 }
 #div-form{
     text-align: center;
@@ -24,8 +25,8 @@ form{
     text-align: right;
     
 }
-form table{
-    
+table{
+    width: 100%;
     
 }
 
@@ -34,12 +35,12 @@ form table{
     min-height: 25px;
 }
 .th-col1{
-    min-width: 90px;
+    width: 20%;/*90px;*/
     text-align: left;
 }
 .td-col2{
     display: flex;
-    width: 300px;
+    width: 100%;/*300px;*/
 }
 .td-col2 input{
     width: 100%;
