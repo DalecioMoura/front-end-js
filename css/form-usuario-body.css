@@ -33,7 +33,7 @@ form{
  text-align: right;
 }
 .td-col2 input{
-    width: 400px;
+    width: 100%;/*width: 400px;*/
     height: 25px;
     text-align: center;
 }
