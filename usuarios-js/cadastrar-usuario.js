@@ -26,13 +26,16 @@ async function cadastrarUsuario(){
 
 function pegaForm(){
     let nome = document.getElementById('id-nome').value;
+    let email = document.getElementById('id-email').value;
     let apelido = nome.substring(0, nome.indexOf(' '));
+    let usuario = email.substring(0, nome.indexOf('@'));
     let dados = {
         "matricula":    document.getElementById('id-matricula').value,
         "nome":         nome,
         "apelido":      apelido,
-        "setor":        document.getElementById('id-setor').value
-
+        "setor":        document.getElementById('id-setor').value,
+        "email":        document.getElementById('id-email').value,
+        "usuario":      usuario
     };
 
     return dados;
@@ -42,6 +45,7 @@ function exibirMensagem(){
     document.getElementById('id-matricula').value   = '';
     document.getElementById('id-nome').value        = '';
     document.getElementById('id-setor').value       = '';
+    document.getElementById('id-email').value       = '';
 
     let msg = document.getElementById('id-msg');
     msg.innerHTML = 'Usuário cadastrado com sucesso!'

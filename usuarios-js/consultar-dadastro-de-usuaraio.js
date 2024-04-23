@@ -7,6 +7,7 @@ function consultarUsuarios(){
         "matricula":    document.getElementById('id-matricula').value,
         "nome":         document.getElementById('id-nome').value,
         "setor":        document.getElementById('id-setor').value,
+        "email":        document.getElementById('id-email').value
     };
     
     let filtro      = {"filtro":'', "valor":''};
