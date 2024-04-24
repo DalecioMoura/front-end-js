@@ -25,22 +25,21 @@ async function cadastrarUsuario(){
 }
 
 function pegaForm(){
-    let nome = document.getElementById('id-nome').value;
+    
+    let nomeAux = document.getElementById('id-nome').value.toLowerCase().split(" ");
+    let nome = nomeAux.map((trataNome)=>{return trataNome[0].toUpperCase() + trataNome.substring(1)}).join(" ");
     let email = document.getElementById('id-email').value;
-    console.log(email);
     let apelido = nome.substring(0, nome.indexOf(' '));
     let usuario = email.substring(0, email.indexOf('@'));
-    console.log(usuario);
+    
     let dados = {
         "matricula":    document.getElementById('id-matricula').value,
-        "nome":         nome.toUpperCase(),
-        "apelido":      apelido.toUpperCase(),
+        "nome":         nome,
+        "apelido":      apelido,
         "setor":        document.getElementById('id-setor').value.toUpperCase(),
-        "email":        document.getElementById('id-email').value.toUpperCase(),
-        "usuario":      usuario.toUpperCase()
+        "email":        document.getElementById('id-email').value.toLowerCase(),
+        "usuario":      usuario.toLowerCase()
     };
-
-    console.log(dados.usuario);
 
     return dados;
 }

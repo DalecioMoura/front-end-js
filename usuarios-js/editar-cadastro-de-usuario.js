@@ -10,11 +10,18 @@ document.getElementById('tr-email').style.display = 'none';
 function editarUsuario(){
 
     if(isLogado == 'true'){
+        let nomeAux = document.getElementById('id-nome').value.toLowerCase().split(" ");
+        let nome = '';
+
+        if(nomeAux != ''){
+            nome = nomeAux.map((trataNome)=>{return trataNome[0].toUpperCase() + trataNome.substring(1)}).join(" ");
+        }
+
         let dados = {
             "matricula":    document.getElementById('id-matricula').value,
-            "nome":         document.getElementById('id-nome').value,
-            "setor":        document.getElementById('id-setor').value,
-            "email":        document.getElementById('id-email').value
+            "nome":         nome,
+            "setor":        document.getElementById('id-setor').value.toUpperCase(),
+            "email":        document.getElementById('id-email').value.toLowerCase()
         };
     
         let filtro      = {"filtro":'', "valor":''};
@@ -52,8 +59,14 @@ async function buscarDados(filtro){
     const res = await req.json();
 
     let usuario =res.result[0];
-    id = usuario.id;
 
+    if(res.result == ''){
+        console.log('Dados não encontrados!');
+        return;
+    }
+
+    id = usuario.id;
+    
     document.getElementById('tr-nome').style.display = '';
     document.getElementById('tr-setor').style.display = '';
     document.getElementById('tr-email').style.display = '';
@@ -71,21 +84,21 @@ async function buscarDados(filtro){
 
 async function editarDados(){
     
-    let nome = document.getElementById('id-nome').value;
+    let nomeAux = document.getElementById('id-nome').value.toLowerCase().split(" ");
+    let nome = nomeAux.map((trataNome)=>{return trataNome[0].toUpperCase() + trataNome.substring(1)}).join(" ");
     let apelido = nome.substring(0, nome.indexOf(' '));
     let email = document.getElementById('id-email').value;
     let usuario = email.substring(0, email.indexOf('@'));
-
-    
     
     const dados = {
         "matricula":document.getElementById('id-matricula').value,
-        "nome":nome.toUpperCase(),
-        "apelido":apelido.toUpperCase(),
+        "nome":nome,
+        "apelido":apelido,
         "setor":document.getElementById('id-setor').value.toUpperCase(),
-        "email":document.getElementById('id-email').value.toUpperCase(),
-        "usuario":usuario.toUpperCase()
+        "email":document.getElementById('id-email').value.toLowerCase(),
+        "usuario":usuario.toLowerCase()
     };
+
     
     let dadosJson = JSON.stringify(dados);
 
@@ -98,12 +111,6 @@ async function editarDados(){
     const res = await req.json();
     
     habilitaEditar = false;
-
-    
-    /*document.getElementById('id-matricula').value   = '';
-    document.getElementById('id-nome').value        = '';
-    document.getElementById('id-setor').value       = '';
-    document.getElementById('id-input-enviar').value    = 'Buscar';*/
     
     exibirUsuarios(res.result, 'Editar outro usuário');
 
