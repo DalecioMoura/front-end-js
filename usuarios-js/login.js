@@ -4,6 +4,7 @@ let nomeBd      = sessionStorage.nome;
 let setorBd     = sessionStorage.setor;
 let isLogado    = sessionStorage.logado;
 let apelidoBd   = sessionStorage.apelido;
+let usuarioBd   = sessionStorage.usuario;
 
 if(isLogado == 'true'){
     usuarioJaLogado();
@@ -14,7 +15,7 @@ else{
 
 async function fazerLogin(){
     let matricula = document.getElementById('id-matricula').value;
-    let nome = document.getElementById('id-nome').value;
+    let usuario = document.getElementById('id-usuario').value;
 
     let filtro = {"filtro":'', "valor":''};
 
@@ -23,22 +24,22 @@ async function fazerLogin(){
         filtro.valor = matricula;
         await buscaDados(filtro);
         if(matricula === matriculaBd){
-            usuario = nomeBd;
+            usuario = usuarioBd;
             isLogado = true;
             console.log('Login efetuado com sucesso!')
         }
             
-    }else if(nome){
-        filtro.filtro = "nome";
-        filtro.valor = nome;
+    }else if(usuario){
+        filtro.filtro = "usuario";
+        filtro.valor = usuario;
         await buscaDados(filtro);
-        if(nome == nomeBd){
-            usuario = nomeBd;
+        if(usuario == usuarioBd){
+            usuario = usuarioBd;
             isLogado = true;
             console.log('Login efetuado com sucesso!');
         }
     }else{
-        console.log('Entre com o se nome de usuário ou com sua matrícula!')
+        console.log('Entre com o seu nome de usuário ou com sua matrícula!')
     }
 }
 
@@ -53,17 +54,19 @@ async function buscaDados(filtro){
     nomeBd      = res.result[0].nome;
     apelidoBd   = res.result[0].apelido;
     setorBd     = res.result[0].setor;
+    usuarioBd   = res.result[0].usuario;
 
     sessionStorage.logado       = true;
     sessionStorage.nome         = nomeBd;
     sessionStorage.apelido      = apelidoBd;
     sessionStorage.matricula    = matriculaBd;
     sessionStorage.setor        = setorBd;
+    sessionStorage.usuario      = usuarioBd;
 
     usuarioJaLogado();
 
     document.getElementById('id-matricula').value = '';
-    document.getElementById('id-nome').value = '';
+    document.getElementById('id-usuario').value = '';
 }
 
 function loginLogout(){
@@ -72,15 +75,17 @@ function loginLogout(){
             isLogado = false;
             sessionStorage.logado = false;
 
-            matriculaBd ='';
+            matriculaBd = '';
             nomeBd      = '';
             apelidoBd   = '';
             setorBd     = '';
+            usuarioBd   = '';
 
             sessionStorage.matricula    = '';
             sessionStorage.nome         = '';
             sessionStorage.apelido      = '';
             sessionStorage.setor        = '';
+            sessionStorage.usuario      = '';
             
             usuarioNaoLogado();
         }
