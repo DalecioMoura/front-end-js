@@ -3,6 +3,7 @@ let id = '';
 
 document.getElementById('tr-nome').style.display = 'none';
 document.getElementById('tr-setor').style.display = 'none';
+document.getElementById('tr-email').style.display = 'none';
 
 function excluirUsuario(){
     
@@ -37,12 +38,14 @@ async function buscarUsuario(filtro){
 
     document.getElementById('tr-nome').style.display = '';
     document.getElementById('tr-setor').style.display = '';
+    document.getElementById('tr-email').style.display = '';
 
     id = usuario.id;
 
     document.getElementById('id-matricula').value   = usuario.matricula;
     document.getElementById('id-nome').value        = usuario.nome;
     document.getElementById('id-setor').value       = usuario.setor;
+    document.getElementById('id-email').value       = usuario.email;
 
     document.getElementById('id-input-enviar').value = 'Excluir';
 
@@ -74,9 +77,11 @@ function reset(){
     document.getElementById('id-matricula').value   = '';
     document.getElementById('id-nome').value        = '';
     document.getElementById('id-setor').value       = '';
+    document.getElementById('id-email').value       = '';
         
     document.getElementById('tr-nome').style.display    = 'none';
     document.getElementById('tr-setor').style.display   = 'none';
+    document.getElementById('tr-email').style.display   = 'none';
     document.getElementById('id-input-enviar').value    = 'Buscar';
 
     let msg = document.getElementById('id-msg');

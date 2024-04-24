@@ -1,6 +1,6 @@
 function exibirUsuarios(lista, msg){
     console.log(lista);
-    let textElement = ['#','Matricula','Nome','apelido', 'Setor'];
+    let textElement = ['#','Matricula','Nome','apelido', 'Setor', 'E-mail', 'Usuario'];
     let sectionListarUsuarios = document.getElementById('section-exibir-usuarios');
     sectionListarUsuarios.style.display = 'inline-block';
 

@@ -27,16 +27,20 @@ async function cadastrarUsuario(){
 function pegaForm(){
     let nome = document.getElementById('id-nome').value;
     let email = document.getElementById('id-email').value;
+    console.log(email);
     let apelido = nome.substring(0, nome.indexOf(' '));
-    let usuario = email.substring(0, nome.indexOf('@'));
+    let usuario = email.substring(0, email.indexOf('@'));
+    console.log(usuario);
     let dados = {
         "matricula":    document.getElementById('id-matricula').value,
-        "nome":         nome,
-        "apelido":      apelido,
-        "setor":        document.getElementById('id-setor').value,
-        "email":        document.getElementById('id-email').value,
-        "usuario":      usuario
+        "nome":         nome.toUpperCase(),
+        "apelido":      apelido.toUpperCase(),
+        "setor":        document.getElementById('id-setor').value.toUpperCase(),
+        "email":        document.getElementById('id-email').value.toUpperCase(),
+        "usuario":      usuario.toUpperCase()
     };
+
+    console.log(dados.usuario);
 
     return dados;
 }

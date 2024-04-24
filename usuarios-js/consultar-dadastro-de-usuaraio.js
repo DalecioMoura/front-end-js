@@ -4,10 +4,10 @@ function consultarUsuarios(){
     let isFiltro = false;
     
     let dados = {
-        "matricula":    document.getElementById('id-matricula').value,
-        "nome":         document.getElementById('id-nome').value,
-        "setor":        document.getElementById('id-setor').value,
-        "email":        document.getElementById('id-email').value
+        "matricula":    document.getElementById('id-matricula').value.toUpperCase(),
+        "nome":         document.getElementById('id-nome').value.toUpperCase(),
+        "setor":        document.getElementById('id-setor').value.toUpperCase(),
+        "email":        document.getElementById('id-email').value.toUpperCase()
     };
     
     let filtro      = {"filtro":'', "valor":''};
@@ -54,4 +54,5 @@ function limparDados(){
     document.getElementById('id-matricula').value   = '';
     document.getElementById('id-nome').value        = '';
     document.getElementById('id-setor').value       = '';
+    document.getElementById('id-email').value       = '';
 }

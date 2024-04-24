@@ -5,6 +5,7 @@ let isFiltro = false;
 
 document.getElementById('tr-nome').style.display = 'none';
 document.getElementById('tr-setor').style.display = 'none';
+document.getElementById('tr-email').style.display = 'none';
 
 function editarUsuario(){
 
@@ -13,6 +14,7 @@ function editarUsuario(){
             "matricula":    document.getElementById('id-matricula').value,
             "nome":         document.getElementById('id-nome').value,
             "setor":        document.getElementById('id-setor').value,
+            "email":        document.getElementById('id-email').value
         };
     
         let filtro      = {"filtro":'', "valor":''};
@@ -54,10 +56,12 @@ async function buscarDados(filtro){
 
     document.getElementById('tr-nome').style.display = '';
     document.getElementById('tr-setor').style.display = '';
+    document.getElementById('tr-email').style.display = '';
   
     document.getElementById('id-matricula').value = usuario.matricula;
     document.getElementById('id-nome').value = usuario.nome;
     document.getElementById('id-setor').value = usuario.setor;
+    document.getElementById('id-email').value = usuario.email;
 
     let input = document.getElementById('id-input-enviar');
     input.value = 'Editar';
@@ -69,14 +73,20 @@ async function editarDados(){
     
     let nome = document.getElementById('id-nome').value;
     let apelido = nome.substring(0, nome.indexOf(' '));
+    let email = document.getElementById('id-email').value;
+    let usuario = email.substring(0, email.indexOf('@'));
 
+    
+    
     const dados = {
         "matricula":document.getElementById('id-matricula').value,
-        "nome":nome,
-        "apelido":apelido,
-        "setor":document.getElementById('id-setor').value
+        "nome":nome.toUpperCase(),
+        "apelido":apelido.toUpperCase(),
+        "setor":document.getElementById('id-setor').value.toUpperCase(),
+        "email":document.getElementById('id-email').value.toUpperCase(),
+        "usuario":usuario.toUpperCase()
     };
-
+    
     let dadosJson = JSON.stringify(dados);
 
     const req = await fetch(`https://apicontroledematerial.onrender.com/api/usuario/${id}`,{
@@ -105,9 +115,11 @@ function exibirMensagem(){
     document.getElementById('id-matricula').value   = '';
     document.getElementById('id-nome').value        = '';
     document.getElementById('id-setor').value       = '';
+    document.getElementById('id-email').value       = '';
         
     document.getElementById('tr-nome').style.display    = 'none';
     document.getElementById('tr-setor').style.display   = 'none';
+    document.getElementById('tr-email').style.display   = 'none';
     document.getElementById('id-input-enviar').value    = 'Buscar';
 
     let msg = document.getElementById('id-msg');
