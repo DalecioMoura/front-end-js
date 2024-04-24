@@ -1,12 +1,20 @@
 
 function consultarMaterial(){
-    let isFiltro = false;
+
+    let isFiltro    = false;
+    let tipoAux     = document.getElementById('id-tipo').value.toLowerCase().split(" ");
+    let tipo        = '';
+
+        if(tipoAux != ''){
+            tipo = tipoAux.map((trataTipo)=>{return trataTipo[0].toUpperCase() + trataTipo.substring(1)}).join(" ");
+        }
+
     let dados = {
         "codigo"        : document.getElementById('id-codigo').value,
-        "tipo"          : document.getElementById('id-tipo').value,
+        "tipo"          : tipo,//document.getElementById('id-tipo').value,
         "localizacao"   : document.getElementById('id-local').value,
-        "modelo"        : document.getElementById('id-modelo').value,
-        "fabricante"    : document.getElementById('id-fabricante').value
+        "modelo"        : document.getElementById('id-modelo').value.toUpperCase(),
+        "fabricante"    : document.getElementById('id-fabricante').value.toUpperCase()
         }
     let filtro = {"filtro":'', "valor":''};
 

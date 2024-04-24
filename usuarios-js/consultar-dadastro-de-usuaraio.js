@@ -1,20 +1,20 @@
 
 function consultarUsuarios(){
 
-    let isFiltro = false;
+    let isFiltro    = false;
 
-    let nomeAux = document.getElementById('id-nome').value.toLowerCase().split(" ");
-    let nome = '';
+    let nomeAux     = document.getElementById('id-nome').value.toLowerCase().split(" ");
+    let nome        = '';
 
         if(nomeAux != ''){
             nome = nomeAux.map((trataNome)=>{return trataNome[0].toUpperCase() + trataNome.substring(1)}).join(" ");
         }
     
     let dados = {
-        "matricula":    document.getElementById('id-matricula').value.toUpperCase(),
-        "nome":         nome,
-        "setor":        document.getElementById('id-setor').value.toUpperCase(),
-        "email":        document.getElementById('id-email').value.toLowerCase()
+        "matricula" : document.getElementById('id-matricula').value.toUpperCase(),
+        "nome"      : nome,
+        "setor"     : document.getElementById('id-setor').value.toUpperCase(),
+        "email"     : document.getElementById('id-email').value.toLowerCase()
     };
     
     let filtro      = {"filtro":'', "valor":''};
@@ -23,7 +23,7 @@ function consultarUsuarios(){
         if(dados[i] !== '' && dados[i] !== null){
             filtro.filtro   = i;
             filtro.valor    = dados[i];
-            isFiltro = true;
+            isFiltro        = true;
             break;
             
         }

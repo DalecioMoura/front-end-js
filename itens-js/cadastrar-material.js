@@ -44,15 +44,18 @@ async function cadastarMaterial(){
 
 function pegaForm(){
 
+   let tipoAux = document.getElementById('id-tipo').value.toLowerCase().split(" ");
+   let tipo    = tipoAux.map((trataTipo)=>{return trataTipo[0].toUpperCase() + trataTipo.substring(1)}).join(" ");
+
    const dados = {
-      "codigo":      document.getElementById('id-codigo').value,
-      "tipo":        document.getElementById('id-tipo').value,
-      "localizacao":       document.getElementById('id-local').value,
-      "n_serie":       document.getElementById('id-serie').value,
-      "modelo":      document.getElementById('id-modelo').value,
-      "fabricante":  document.getElementById('id-fabricante').value,
-      "descricao":   document.getElementById('id-descricao').value,
-      "status":{"st":"Disponível", "nome":"", "matricula":"", "destino":"", "data":""}
+      "codigo"       : document.getElementById('id-codigo').value,
+      "tipo"         : tipo,//document.getElementById('id-tipo').value,
+      "localizacao"  : document.getElementById('id-local').value,
+      "n_serie"      : document.getElementById('id-serie').value,
+      "modelo"       : document.getElementById('id-modelo').value.toUpperCase(),
+      "fabricante"   : document.getElementById('id-fabricante').value.toUpperCase(),
+      "descricao"    : document.getElementById('id-descricao').value,
+      "status"       :{"st":"Disponível", "nome":"", "matricula":"", "destino":"", "data":""}
    }
    return dados
 }
