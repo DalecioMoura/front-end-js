@@ -14,28 +14,28 @@ else{
 }
 
 async function fazerLogin(){
-    let matricula = document.getElementById('id-matricula').value;
-    let usuario = document.getElementById('id-usuario').value;
+    let matricula   = document.getElementById('id-matricula').value;
+    let usuario     = document.getElementById('id-usuario').value.toLowerCase();
 
     let filtro = {"filtro":'', "valor":''};
 
     if(matricula){
-        filtro.filtro = "matricula";
-        filtro.valor = matricula;
+        filtro.filtro   = "matricula";
+        filtro.valor    = matricula;
         await buscaDados(filtro);
         if(matricula === matriculaBd){
-            usuario = usuarioBd;
-            isLogado = true;
+            usuario     = usuarioBd;
+            isLogado    = true;
             console.log('Login efetuado com sucesso!')
         }
             
     }else if(usuario){
-        filtro.filtro = "usuario";
-        filtro.valor = usuario;
+        filtro.filtro   = "usuario";
+        filtro.valor    = usuario;
         await buscaDados(filtro);
         if(usuario == usuarioBd){
-            usuario = usuarioBd;
-            isLogado = true;
+            usuario     = usuarioBd;
+            isLogado    = true;
             console.log('Login efetuado com sucesso!');
         }
     }else{
@@ -65,15 +65,15 @@ async function buscaDados(filtro){
 
     usuarioJaLogado();
 
-    document.getElementById('id-matricula').value = '';
-    document.getElementById('id-usuario').value = '';
+    document.getElementById('id-matricula').value   = '';
+    document.getElementById('id-usuario').value     = '';
 }
 
 function loginLogout(){
     if(isLogado == 'true' || sessionStorage.logado == 'true'){
         if(confirm("Deseja Sair?")){
-            isLogado = false;
-            sessionStorage.logado = false;
+            isLogado                = false;
+            sessionStorage.logado   = false;
 
             matriculaBd = '';
             nomeBd      = '';
@@ -101,21 +101,21 @@ function loginLogout(){
 
 function usuarioJaLogado(){
     console.log('usuáruio logado: '+isLogado);
-    document.getElementById('id-nome-usuario').style.display = '';
-    document.getElementById('id-login-usuario').innerHTML = 'SAIR';
-    document.getElementById('id-info').innerHTML = 'USUÁRIO:';
-    document.getElementById('header-nome').innerHTML = nomeBd;
-    document.getElementById('header-matricula').innerHTML = matriculaBd;
-    document.getElementById('header-setor').innerHTML = setorBd;
+    document.getElementById('id-nome-usuario').style.display    = '';
+    document.getElementById('id-login-usuario').innerHTML       = 'SAIR';
+    document.getElementById('id-info').innerHTML                = 'USUÁRIO:';
+    document.getElementById('header-nome').innerHTML            = nomeBd;
+    document.getElementById('header-matricula').innerHTML       = matriculaBd;
+    document.getElementById('header-setor').innerHTML           = setorBd;
 }
 
 function usuarioNaoLogado(){
     console.log('usuáruio logado: '+isLogado);
-    document.getElementById('id-nome-usuario').style.display = 'none';
-    document.getElementById('id-login-usuario').innerHTML = 'Entrar';
-    document.getElementById('id-info').innerHTML = '';
-    document.getElementById('header-nome').innerHTML = '';
-    document.getElementById('header-matricula').innerHTML = '';
-    document.getElementById('header-setor').innerHTML = '';
+    document.getElementById('id-nome-usuario').style.display    = 'none';
+    document.getElementById('id-login-usuario').innerHTML       = 'Entrar';
+    document.getElementById('id-info').innerHTML                = '';
+    document.getElementById('header-nome').innerHTML            = '';
+    document.getElementById('header-matricula').innerHTML       = '';
+    document.getElementById('header-setor').innerHTML           = '';
 
 }
